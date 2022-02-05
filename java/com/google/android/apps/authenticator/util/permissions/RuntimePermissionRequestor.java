@@ -21,7 +21,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
-import android.support.v4.app.ActivityCompat;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import com.google.common.base.Preconditions;
 
 /** Runtime permission requestor implementation for Android M and above. */
@@ -31,7 +34,7 @@ public class RuntimePermissionRequestor implements PermissionRequestor {
   @TargetApi(23)
   public int checkSelfPermission(Context context, String permission) {
     Preconditions.checkArgument(VERSION.SDK_INT >= VERSION_CODES.M);
-    return ActivityCompat.checkSelfPermission(context, permission);
+    return ContextCompat.checkSelfPermission(context, permission);
   }
 
   @Override
